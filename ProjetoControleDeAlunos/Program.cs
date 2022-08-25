@@ -83,6 +83,14 @@ namespace ProjetoControleDeAlunos
                         Console.Clear();
                         Opcao.SalvaArquivo(lista, num++);
                         break;
+
+                    case 7:
+
+                        Console.Clear();
+                        Console.WriteLine("Obrigado pela experiência!");
+                        programaaberto = false;
+                        break;
+
                 }
                 Console.WriteLine();
 
