@@ -13,6 +13,7 @@ namespace ProjetoControleDeAlunos.Entities
         public double Nota2 { get; set; }
         public double Nota3 { get; set; }
         public double Nota4 { get; set; }
+        public double Media { get; set; }
 
         public Aluno(string nome, double nota1)
         {
@@ -34,6 +35,10 @@ namespace ProjetoControleDeAlunos.Entities
             this.Nota4 = nota4;
         }
 
+        public Aluno(double media)
+        {
+            this.Media = media;
+        }
        
         
     }

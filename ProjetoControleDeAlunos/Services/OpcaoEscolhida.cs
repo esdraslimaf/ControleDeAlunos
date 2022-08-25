@@ -122,19 +122,18 @@ namespace ProjetoControleDeAlunos.Services
             }
         }
 
-        public void RetornaMedia(List<Aluno> lista)
+        public double RetornaMedia(List<Aluno> lista)
         {
-            Console.WriteLine("Por quanto deseja dividir as notas para fazer a média (1, 2, 3, ou 4)?");
-            int numerodivisor = int.Parse(Console.ReadLine());
-
+        
+            double media = 0.0;
             foreach (Aluno aluno in lista)
             {
-                double media = 0.0;
+                
                 media += aluno.Nota1 + aluno.Nota2 + aluno.Nota3 + aluno.Nota4;
-                media = media / numerodivisor;
-                Console.WriteLine($"Aluno: {aluno.Nome} - Notas: {aluno.Nota1}, {aluno.Nota2}, {aluno.Nota3}, {aluno.Nota4} - média feita por {numerodivisor} = {media.ToString("F2", CultureInfo.InvariantCulture)}");
+                media = media;
+                Console.WriteLine($"Aluno: {aluno.Nome} - Notas: {aluno.Nota1}, {aluno.Nota2}, {aluno.Nota3}, {aluno.Nota4} = {media.ToString("F2", CultureInfo.InvariantCulture)}");
             }
-
+            return media;
         }
 
         public void RemoveAluno(List<Aluno> listadealunos)
@@ -260,7 +259,7 @@ namespace ProjetoControleDeAlunos.Services
             {
                 foreach (Aluno aluno in lista)
                 {
-                    sw.WriteLine($"Aluno: {aluno.Nome}, 1º Nota: {aluno.Nota1}, 2º Nota: {aluno.Nota2}, 3º Nota: {aluno.Nota3}, 4º Nota: 5");
+                    sw.WriteLine($"Aluno: {aluno.Nome} 1º Nota: {aluno.Nota1} 2º Nota: {aluno.Nota2} 3º Nota: {aluno.Nota3} 4º Nota: {aluno.Nota4} Média: {RetornaMedia(lista)} ");
                 }
                 Console.WriteLine("Documento criado em: $" + newfile);
 
@@ -279,10 +278,22 @@ namespace ProjetoControleDeAlunos.Services
             } */
 
             //} 
-
-
         }
 
+        public void Importar(List<Aluno> lista)
+        {
+            Console.WriteLine(@"Insira o caminho do arquivo o qual deseja importar. Ex: C:\savingdocs\saved0.txt");
+            string path = Console.ReadLine();
+            FileInfo fileInfo = new FileInfo(path);
+            string[] lines = File.ReadAllLines(path);
+
+            for(int i = 0; i < lines.Length; i++)
+            {
+                string[] dados = lines[i].Split(' ');
+                lista.Add(new Aluno(dados[1], double.Parse(dados[4]), double.Parse(dados[7]), double.Parse(dados[10]), double.Parse(dados[13])));
+            }
+
+        }
 
     }
 

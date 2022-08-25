@@ -22,8 +22,9 @@ namespace ProjetoControleDeAlunos
                 Console.WriteLine("3 - Fazer/ver média dos alunos. ");
                 Console.WriteLine("4 - Excluir aluno da lista.");
                 Console.WriteLine("5 - Editar dados de alunos.");       
-                Console.WriteLine("6 - Salvar");
-                Console.WriteLine("7 - Fechar programa. ");
+                Console.WriteLine("6 - Salvar.");
+                Console.WriteLine("7 - Importar lista de documento já salvo.");
+                Console.WriteLine("8 - Fechar programa. ");
                 Console.WriteLine();
 
                 int opcao = int.Parse(Console.ReadLine());
@@ -66,7 +67,10 @@ namespace ProjetoControleDeAlunos
 
 
                     case 3: Console.Clear();
-                        Opcao.RetornaMedia(lista);
+                        Console.WriteLine("Por quanto deseja dividir as notas para fazer a média (1, 2, 3, ou 4)?");
+                        int numerodivisor = int.Parse(Console.ReadLine());
+                      double b =  Opcao.RetornaMedia(lista);
+                        Console.WriteLine(b/numerodivisor);
                         break;
 
                     case 4: Console.Clear();
@@ -85,9 +89,15 @@ namespace ProjetoControleDeAlunos
                         break;
 
                     case 7:
+                        Console.Clear();
+                        Opcao.Importar(lista);                   
+                        break;
+
+                    case 8:
 
                         Console.Clear();
                         Console.WriteLine("Obrigado pela experiência!");
+                        Console.WriteLine("Programa encerrado!");
                         programaaberto = false;
                         break;
 
