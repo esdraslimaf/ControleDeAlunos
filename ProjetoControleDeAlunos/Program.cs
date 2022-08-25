@@ -19,7 +19,7 @@ namespace ProjetoControleDeAlunos
                 Console.WriteLine("Escolha uma opção: ");
                 Console.WriteLine("1 - Adicionar aluno.");
                 Console.WriteLine("2 - Ver lista de alunos adicionados.");
-                Console.WriteLine("3 - Fazer/ver média dos alunos. ");
+                Console.WriteLine("3 - Fazer média dos alunos. ");
                 Console.WriteLine("4 - Excluir aluno da lista.");
                 Console.WriteLine("5 - Editar dados de alunos.");       
                 Console.WriteLine("6 - Salvar.");
@@ -69,8 +69,8 @@ namespace ProjetoControleDeAlunos
                     case 3: Console.Clear();
                         Console.WriteLine("Por quanto deseja dividir as notas para fazer a média (1, 2, 3, ou 4)?");
                         int numerodivisor = int.Parse(Console.ReadLine());
-                      double b =  Opcao.RetornaMedia(lista);
-                        Console.WriteLine(b/numerodivisor);
+                        Opcao.AcrescentaMedia(lista,numerodivisor);
+                        Console.WriteLine("Médias feitas! Para visualizá-las selecione a opção 2");
                         break;
 
                     case 4: Console.Clear();
